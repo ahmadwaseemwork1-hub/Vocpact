@@ -25,6 +25,9 @@ Everything lives in `lib/content.js` unless noted.
 
 ## Still to wire
 
+- Team photo for Khawaja Muhammad Musa: drop the file in `public/team/khawaja-muhammad-musa.jpg`
+  and uncomment the `photo` line on his entry in `lib/content.js` (an initials avatar shows until then).
+
 - `components/BookingForm.jsx` submits via `mailto:`. Swap in Calendly, Formspree, or
   an API route.
 - No favicon or `og:image` yet. Add to `app/` and `public/`.

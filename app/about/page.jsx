@@ -1,7 +1,7 @@
 import Reveal from "@/components/Reveal";
 import SplitReveal from "@/components/SplitReveal";
 import { PageHero, CTABand } from "@/components/ui";
-import { Ph } from "@/components/Placeholder";
+import TeamCard from "@/components/TeamCard";
 import { aboutStory, aboutValues, leadership } from "@/lib/content";
 
 export const metadata = {
@@ -58,19 +58,27 @@ export default function AboutPage() {
               text="The people accountable for your account"
             />
           </div>
-          <Reveal className="team-grid" stagger={0.08} y={24}>
-            {leadership.map((m) => (
-              <article className="team-card" key={m.name}>
-                <span className="team-card__role">{m.role}</span>
-                <h3>{m.name}</h3>
-                <p>{m.body}</p>
-                {m.note ? (
-                  <p className="team-card__note">
-                    <Ph value={m.note} />
-                  </p>
-                ) : null}
-              </article>
-            ))}
+          <Reveal className="team-grid team-grid--founders" stagger={0.08} y={24}>
+            {leadership
+              .filter((m) => m.group === "founders")
+              .map((m) => (
+                <TeamCard
+                  key={m.name}
+                  member={m}
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                />
+              ))}
+          </Reveal>
+          <Reveal className="team-grid team-grid--partners" stagger={0.08} y={24}>
+            {leadership
+              .filter((m) => m.group === "partners")
+              .map((m) => (
+                <TeamCard
+                  key={m.name}
+                  member={m}
+                  sizes="(min-width: 980px) 33vw, (min-width: 640px) 50vw, 100vw"
+                />
+              ))}
           </Reveal>
         </div>
       </section>
